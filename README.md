@@ -1,2 +1,2 @@
 # sistemas_operacionais
-Exercícios práticos e trabalhos da matéria Sistemas Operacionais.
+Trabalho prático da matéria Sistemas Operacionais. 02/2016
