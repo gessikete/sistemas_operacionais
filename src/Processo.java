@@ -8,8 +8,21 @@ public class Processo {
 	private int qntBlocosAlocados;
 	private int t_inicializa, t_processador;
 	private boolean impressora, scanner, modem, disco;
+	private int tempoExecutado;
 
 	
+	public int getTempoExecutado() {
+		return tempoExecutado;
+	}
+
+
+
+	public void incrTempoExecutado() {
+		this.tempoExecutado++;
+	}
+
+
+
 	public Processo(int t_inicializa, int prioridade, int t_processador, int qntBlocosAlocados,
 			boolean impressora, boolean scanner, boolean modem, boolean disco) {
 		super();
@@ -24,6 +37,7 @@ public class Processo {
 		this.scanner = scanner;
 		this.modem = modem;
 		this.disco = disco;
+		this.tempoExecutado = 0;
 		
 	}
 	

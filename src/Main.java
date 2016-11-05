@@ -22,14 +22,15 @@ public class Main {
     	    e.printStackTrace();
     	  }
 
-    	  Dispatcher dispatcher = new Dispatcher();
+    	  GerenciadorDeProcessos dispatcher = new GerenciadorDeProcessos();
     	  Clock clock = new Clock();
     	  dispatcher.start();
     	  clock.start();
+    	  Filas.filasInit();
     	  
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
-    		  CriadorDeProcessos criador = new CriadorDeProcessos(processAttrs);
+    		  Dispatcher criador = new Dispatcher(processAttrs);
     		  Thread t = new Thread(criador);
     		  t.start();
     				  

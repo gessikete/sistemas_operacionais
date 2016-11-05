@@ -1,32 +1,28 @@
-public class Dispatcher extends Thread{
+
+public class Dispatcher implements Runnable {
+	String [] processAttrs;
+	
+	public Dispatcher(String [] processAttrs) {
+		this.processAttrs = processAttrs;
+	}
 	
 	@Override
 	public void run() {
-		while(true){
+		
+		Processo processo = new Processo(Integer.parseInt(processAttrs[0]), Integer.parseInt(processAttrs[1]), 
+				  Integer.parseInt(processAttrs[2]), Integer.parseInt(processAttrs[3]), 
+				  Boolean.parseBoolean(processAttrs[4]), Boolean.parseBoolean(processAttrs[5]), 
+				  Boolean.parseBoolean(processAttrs[6]), Boolean.parseBoolean(processAttrs[7]));
+				  
+		while(Clock.getClock() <= processo.getT_inicializa()){
 			try {
 				Thread.sleep(300);
-				if(!Filas.filaTempoReal.isEmpty()){
-					this.executaTempoReal(Filas.filaTempoReal.get(0));
-					
-				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
-		
-	}	
-	private void executaTempoReal(Processo processo) throws InterruptedException{
-		System.out.println("processes " + processo.getPid() + "=>");
-		System.out.println("\tP"+processo.getPid() + " STARTED");
-		int i = 0;
-		while(processo.getT_processador()>i){
-			System.out.println("\tP" + processo.getPid() + " instruction " + (i+1));
-			i++;			
-			Thread.sleep(1000);			
-		}
-		System.out.println("\tP"+processo.getPid() + " return SIGINT");
-		Filas.filaTempoReal.remove(0);
+		Filas.enfileiraProcesso(processo);
 	}
+
 }
