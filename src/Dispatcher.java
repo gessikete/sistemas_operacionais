@@ -2,10 +2,16 @@ import java.util.ArrayList;
 
 public class Dispatcher {
 	
-	ArrayList<Processo> processos;
+	ArrayList<Processo> filaTempoReal;
+	ArrayList<Processo> filaUsuario1;
+	ArrayList<Processo> filaUsuario2;
+	ArrayList<Processo> filaUsuario3;
 	
 	Dispatcher(){
-		processos = new ArrayList<>(); 
+		filaTempoReal = new ArrayList<>();
+		filaUsuario1 = new ArrayList<>();
+		filaUsuario2 = new ArrayList<>();
+		filaUsuario3 = new ArrayList<>();
 	}
 	public boolean criaProcesso(String[] processAttrs){
 		Processo processo = new Processo(Integer.parseInt(processAttrs[0]), Integer.parseInt(processAttrs[1]), 
@@ -24,9 +30,16 @@ public class Dispatcher {
 		System.out.println("\tscanners: " + processo.isScanner());
 		System.out.println("\tmodems: " + processo.isModem());
 		System.out.println("\tdisco: " + processo.isDisco());
-		return processos.add(processo);		
-	}
-	
-	
+		if(processo.getPrioridade() == 0){
+			return filaTempoReal.add(processo);
+		}else if(processo.getPrioridade()==1){
+			return filaUsuario1.add(processo);
+		}else if(processo.getPrioridade()==2){
+			return filaUsuario2.add(processo);
+		}else{
+			return filaUsuario3.add(processo);
+		}
+				
+	}	
 	
 }
