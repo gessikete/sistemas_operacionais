@@ -24,14 +24,11 @@ public class Main {
     	    e.printStackTrace();
     	  }
     	  
-    	  ArrayList<Processo> processos = new ArrayList<Processo>();
+    	  Dispatcher dispatcher = new Dispatcher();
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
-    		  processos.add(new Processo(Integer.parseInt(processAttrs[0]), Integer.parseInt(processAttrs[1]), 
-    				  Integer.parseInt(processAttrs[2]), Integer.parseInt(processAttrs[3]), 
-    				  Boolean.parseBoolean(processAttrs[4]), Boolean.parseBoolean(processAttrs[5]), 
-    				  Boolean.parseBoolean(processAttrs[6]), Boolean.parseBoolean(processAttrs[7])));
-    		  //System.out.println(record);
+    		  dispatcher.criaProcesso(processAttrs);
+    		   //System.out.println(record);
     	  }
     }
 

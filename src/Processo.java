@@ -25,20 +25,34 @@ public class Processo {
 		this.modem = modem;
 		this.disco = disco;
 		
-		System.out.println("dispatcher => ");
-		System.out.println("\tPID: " + this.pid);
-		System.out.println("\toffset: " + this.offsetMemoria);
-		System.out.println("\tblocks: " + this.qntBlocosAlocados);
-		System.out.println("\tpriority: " + this.prioridade);
-		System.out.println("\ttime init: " + this.t_inicializa);
-		System.out.println("\ttime: " + this.t_processador);
-		System.out.println("\tprinters: " + this.impressora);
-		System.out.println("\tscanners: " + this.scanner);
-		System.out.println("\tmodems: " + this.modem);
-		System.out.println("\tdisco: " + this.disco);
 	}
 	
 	
+	
+	public static int getCountPid() {
+		return countPid;
+	}
+
+
+
+	public int getPid() {
+		return pid;
+	}
+
+
+
+	public boolean isModem() {
+		return modem;
+	}
+
+
+
+	public boolean isDisco() {
+		return disco;
+	}
+
+
+
 	public int getT_inicializa() {
 		return t_inicializa;
 	}
@@ -81,13 +95,6 @@ public class Processo {
 	public void setScanner(boolean scanner) {
 		this.scanner = scanner;
 	}
-	public boolean isDrivers() {
-		return drivers;
-	}
-	public void setDrivers(boolean drivers) {
-		this.drivers = drivers;
-	}
-	
-	
+
 	
 }
