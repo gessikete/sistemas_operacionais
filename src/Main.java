@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -25,10 +23,16 @@ public class Main {
     	  }
 
     	  Dispatcher dispatcher = new Dispatcher();
+    	  Clock clock = new Clock();
     	  dispatcher.start();
+    	  clock.start();
+    	  
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
-    		  Filas.criaProcesso(processAttrs);
+    		  CriadorDeProcessos criador = new CriadorDeProcessos(processAttrs);
+    		  Thread t = new Thread(criador);
+    		  t.start();
+    				  
     		   //System.out.println(record);
     	  }
     }
