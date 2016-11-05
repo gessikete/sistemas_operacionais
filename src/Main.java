@@ -23,11 +23,12 @@ public class Main {
     	    System.err.format("Exception occurred trying to read '%s'.", "entrada.txt");
     	    e.printStackTrace();
     	  }
-    	  
+
     	  Dispatcher dispatcher = new Dispatcher();
+    	  dispatcher.start();
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
-    		  dispatcher.criaProcesso(processAttrs);
+    		  Filas.criaProcesso(processAttrs);
     		   //System.out.println(record);
     	  }
     }
