@@ -24,7 +24,7 @@ public class GerenciadorDeProcessos extends Thread{
 		
 	}	
 	private void executaTempoReal(Processo processo) throws InterruptedException{
-		System.out.println("processes " + processo.getPid() + "=>");
+		System.out.println("processes " + processo.getPid() + " =>");
 		System.out.println("\tP"+processo.getPid() + " STARTED");
 		int i = 0;
 		while(processo.getT_processador()>i){
@@ -36,7 +36,7 @@ public class GerenciadorDeProcessos extends Thread{
 		Filas.filasProcessos.get(0).remove(0);
 	}
 	private void executaUsuario(Processo processo) throws InterruptedException{
-		System.out.println("processes " + processo.getPid() + "=>");
+		System.out.println("processes " + processo.getPid() + " =>");
 		System.out.println("\tP"+processo.getPid() + " STARTED");
 		processo.incrTempoExecutado();
 		if(processo.getTempoExecutado()<=processo.getT_processador()){

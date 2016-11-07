@@ -26,7 +26,7 @@ public class Processo {
 	public Processo(int t_inicializa, int prioridade, int t_processador, int qntBlocosAlocados,
 			boolean impressora, boolean scanner, boolean modem, boolean disco) {
 		super();
-		countPid++;
+		this.incrCountPid();
 		this.pid = countPid;
 		this.prioridade = prioridade;
 		this.offsetMemoria = 0;
@@ -41,7 +41,9 @@ public class Processo {
 		
 	}
 	
-	
+	private synchronized void incrCountPid(){
+		countPid++;
+	}
 	
 	public static int getCountPid() {
 		return countPid;
