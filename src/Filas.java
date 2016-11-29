@@ -6,7 +6,7 @@ public class Filas {
     private static List<Processo> filaUsuario1 = new ArrayList<Processo>();
     private static List<Processo> filaUsuario2 = new ArrayList<Processo>();
     private static List<Processo> filaUsuario3 = new ArrayList<Processo>();
-    static List<List<Processo>> filasProcessos = new ArrayList<List<Processo>>();
+    public static List<List<Processo>> filasProcessos = new ArrayList<List<Processo>>();
 
     public static void filasInit() {
         filasProcessos.add(filaTempoReal);
