@@ -31,6 +31,8 @@ public class Main {
     	  Memoria.showMemory();
     	  Memoria.alocaTempoReal(60);
     	  Memoria.showMemory();
+    	  Memoria.desalocaTempoReal(5, 10);
+    	  Memoria.showMemory();
     	  /*
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");

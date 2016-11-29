@@ -17,6 +17,20 @@ public class Memoria {
 		return aloca(qnt_alocar, usuario, TAM_USUARIO);
 	}
 	
+	public static void desalocaTempoReal(int pos_desaloca, int qnt_desaloca){
+		desaloca(pos_desaloca, qnt_desaloca, tempoReal);
+	}
+
+	public static void desalocaUsuario(int pos_desaloca, int qnt_desaloca){
+		desaloca(pos_desaloca, qnt_desaloca, usuario);
+	}
+	
+
+	private static void desaloca(int pos_desaloca, int qnt_desaloca, boolean[] fila){
+		for(int i = pos_desaloca; i < pos_desaloca + qnt_desaloca; i++){
+			fila[i] = false;
+		}
+	}
 	
 	// podemos fazer quebrar com excessão ao invés de retornar bool
 	private static boolean aloca(int qnt_alocar, boolean[] fila, int max_fila){
