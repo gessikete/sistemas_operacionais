@@ -18,13 +18,20 @@ public class Dispatcher implements Runnable {
 			}
 		}
 
-		// Precisa criar o processo imediatamente antes de criar para criar um número de pid corretamente ordenado
+		// Precisa criar o processo imediatamente antes de enfileirar para criar um número de pid corretamente ordenado
 		Processo processo = new Processo(Integer.parseInt(processAttrs[0]), Integer.parseInt(processAttrs[1]), 
 				  Integer.parseInt(processAttrs[2]), Integer.parseInt(processAttrs[3]), 
 				  Boolean.parseBoolean(processAttrs[4]), Boolean.parseBoolean(processAttrs[5]), 
 				  Boolean.parseBoolean(processAttrs[6]), Boolean.parseBoolean(processAttrs[7]));
 		
-		Filas.enfileiraProcesso(processo);
+		// Só Aloca se tiver memoria, caso contrário falhe sileciosamente
+		int pos_memoria = Memoria.alocar(processo);
+				
+		if(pos_memoria != -1){
+			processo.setPosMemoria(pos_memoria);
+			Filas.enfileiraProcesso(processo);
+		}
+		
 	}
 
 }

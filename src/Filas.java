@@ -18,7 +18,7 @@ public class Filas {
     public static synchronized boolean enfileiraProcesso(Processo processo) {
         System.out.println("dispatcher => ");
         System.out.println("\tPID: " + processo.getPid());
-        System.out.println("\toffset: " + processo.getOffsetMemoria());
+        System.out.println("\toffset: " + processo.getPosMemoria());
         System.out.println("\tblocks: " + processo.getQntBlocosAlocados());
         System.out.println("\tpriority: " + processo.getPrioridade());
         System.out.println("\ttime init: " + processo.getT_inicializa());

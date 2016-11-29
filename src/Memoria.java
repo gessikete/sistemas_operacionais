@@ -5,16 +5,23 @@ public class Memoria {
 	private static boolean[] tempoReal = new boolean[TAM_REAL];
 	private static boolean[] usuario = new boolean[TAM_USUARIO];
 
+
 	/**
 	 * @param qnt_alocar
-	 * @return true se alocar, false se não for possível alocar
+	 * @return posição do vetor caso aloque, -1 caso contrário
 	 */
-	public static boolean alocaTempoReal(int qnt_alocar){
-		return aloca(qnt_alocar, tempoReal, TAM_REAL);
+	public static int alocar(Processo p){
+		if(p.getPrioridade() == 0)
+			return aloca(p.getQntBlocosAlocados(), tempoReal, TAM_REAL);
+		else
+			return aloca(p.getQntBlocosAlocados(), usuario, TAM_USUARIO);
 	}
 	
-	public static boolean alocaUsuario(int qnt_alocar){
-		return aloca(qnt_alocar, usuario, TAM_USUARIO);
+	public static void desalocar(Processo p){
+		if(p.getPrioridade() == 0)
+			desaloca(p.getPosMemoria(), p.getQntBlocosAlocados(), tempoReal);
+		else
+			desaloca(p.getPosMemoria(), p.getQntBlocosAlocados(), usuario);
 	}
 	
 	public static void desalocaTempoReal(int pos_desaloca, int qnt_desaloca){
@@ -33,7 +40,7 @@ public class Memoria {
 	}
 	
 	// podemos fazer quebrar com excessão ao invés de retornar bool
-	private static boolean aloca(int qnt_alocar, boolean[] fila, int max_fila){
+	private static int aloca(int qnt_alocar, boolean[] fila, int max_fila){
 		int qnt_livre = 0;
 		int k = 0, pos_free = -1;
 		
@@ -55,9 +62,8 @@ public class Memoria {
 			for(int i = pos_free; i < pos_free + qnt_alocar; i++){
 				fila[i] = true;
 			}
-			return true;
 		}
-		return false;
+		return pos_free;
 	}
 	
 		

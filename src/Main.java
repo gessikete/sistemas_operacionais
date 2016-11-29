@@ -24,16 +24,11 @@ public class Main {
 
     	  GerenciadorDeProcessos dispatcher = new GerenciadorDeProcessos();
     	  Clock clock = new Clock();
-    	  //dispatcher.start();
-    	  //clock.start();
+    	  dispatcher.start();
+    	  clock.start();
     	  Filas.filasInit();
     	  
-    	  Memoria.showMemory();
-    	  Memoria.alocaTempoReal(60);
-    	  Memoria.showMemory();
-    	  Memoria.desalocaTempoReal(5, 10);
-    	  Memoria.showMemory();
-    	  /*
+    	  
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
     		  Dispatcher criador = new Dispatcher(processAttrs);
@@ -41,7 +36,7 @@ public class Main {
     		  t.start();
     				  
     		   //System.out.println(record);
-    	  }*/
+    	  }
     }
 
 }
