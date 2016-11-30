@@ -8,7 +8,7 @@ public class Processo {
 	private int t_inicializa, t_processador;
 	private boolean impressora, scanner, modem, disco;
 	private int tempoExecutado;
-	private int posMemoria;
+	private int offset;
 
 	
 	public int getTempoExecutado() {
@@ -33,7 +33,7 @@ public class Processo {
 		this.modem = modem;
 		this.disco = disco;
 		this.tempoExecutado = 0;
-		this.posMemoria = 0;
+		this.offset = 0;
 	}
 	
 	private synchronized void incrCountPid(){
@@ -100,11 +100,12 @@ public class Processo {
 	public void setScanner(boolean scanner) {
 		this.scanner = scanner;
 	}
-	public int getPosMemoria() {
-		return posMemoria;
+	public int getOffset() {
+		return offset;
 	}
-	public void setPosMemoria(int pos_memoria) {
-		this.posMemoria = pos_memoria;
+	
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 
 	

@@ -19,9 +19,9 @@ public class Memoria {
 	
 	public static void desalocar(Processo p){
 		if(p.getPrioridade() == 0)
-			desaloca(p.getPosMemoria(), p.getQntBlocosAlocados(), tempoReal);
+			desaloca(p.getOffset(), p.getQntBlocosAlocados(), tempoReal);
 		else
-			desaloca(p.getPosMemoria(), p.getQntBlocosAlocados(), usuario);
+			desaloca(p.getOffset(), p.getQntBlocosAlocados(), usuario);
 	}
 	
 	public static void desalocaTempoReal(int pos_desaloca, int qnt_desaloca){

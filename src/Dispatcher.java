@@ -28,7 +28,7 @@ public class Dispatcher implements Runnable {
 		int pos_memoria = Memoria.alocar(processo);
 				
 		if(pos_memoria != -1){
-			processo.setPosMemoria(pos_memoria);
+			processo.setOffset(pos_memoria);
 			Filas.enfileiraProcesso(processo);
 		}
 		
