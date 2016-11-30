@@ -7,7 +7,7 @@ public class Memoria {
 
 	/**
 	 * @param qnt_alocar
-	 * @return true se alocar, false se não for possível alocar
+	 * @return true se alocar, false se nao for possivel alocar
 	 */
 	public static boolean alocaTempoReal(int qnt_alocar){
 		return aloca(qnt_alocar, tempoReal, TAM_REAL);
@@ -32,11 +32,13 @@ public class Memoria {
 		}
 	}
 	
-	// podemos fazer quebrar com excessão ao invés de retornar bool
+	// podemos fazer quebrar com excessao ao inves de retornar bool
 	private static boolean aloca(int qnt_alocar, boolean[] fila, int max_fila){
 		int qnt_livre = 0;
 		int k = 0, pos_free = -1;
 		
+		// checa a quantidade de espacos livres na fila informada ate encontrar
+		// a quantidade a alocar ou alcancar o tamanho maximo da fila
 		while(pos_free == -1 && k < max_fila){
 			int i = 0;
 			for(i = k; qnt_livre < qnt_alocar && i < max_fila; i++){
@@ -51,6 +53,7 @@ public class Memoria {
 			k = i + 1;
 			qnt_livre = 0;
 		}
+		// se a quantidade de espacos livres for igual a quantidade que se quer alocar
 		if(pos_free != -1){
 			for(int i = pos_free; i < pos_free + qnt_alocar; i++){
 				fila[i] = true;
@@ -74,7 +77,7 @@ public class Memoria {
 			System.out.print("\t| ");
 		}
 
-		System.out.println("\nUsuário");
+		System.out.println("\nUsuario");
 		for(int i = TAM_REAL; i < TAM_USUARIO+TAM_REAL; i++)
 			System.out.print(i + "\t| ");
 		System.out.println();
