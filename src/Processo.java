@@ -12,7 +12,10 @@ public class Processo {
 
 	public static void checaProcesso(Processo p) throws Exception{
 		if(p.getPrioridade() > 3 || p.getPrioridade() < 0)
-			throw new Exception("Process PID " + p.getPid() + " must have priority in range [0..3]");
+			throw new Exception("Process Error PID " + p.getPid() + ": must have priority in range [0..3]");
+		if(p.getPrioridade() == 0)
+			if(p.getDisco() != 0 || p.getImpressora() != 0 || p.getModem() != 0 || p.getScanner() != 0)
+				throw new Exception("Process Error PID " + p.getPid() + ": real time process cannot allocate resources");
 	}
 	
 	public int getTempoExecutado() {
