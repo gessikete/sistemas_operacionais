@@ -34,7 +34,9 @@ public class GerenciadorDeProcessos extends Thread{
 		}
 		System.out.println("\tP"+processo.getPid() + " return SIGINT");
 		Processo p = Filas.filasProcessos.get(0).remove(0);
-		Memoria.desalocar(p);
+		Memoria.desalocar(p);			
+		Recursos.desalocar(p);
+
 	}
 	
 	private void executaUsuario(Processo processo) throws InterruptedException{
@@ -51,6 +53,7 @@ public class GerenciadorDeProcessos extends Thread{
 			System.out.println("\tP"+processo.getPid() + " return SIGINT");
 			p = Filas.filasProcessos.get(processo.getPrioridade()).remove(0);
 			Recursos.desalocar(p);
+			Memoria.desalocar(p);
 		}
 		else{
 			System.out.println("\tP"+processo.getPid() + " READY");
