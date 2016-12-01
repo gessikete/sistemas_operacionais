@@ -25,7 +25,7 @@ public class Dispatcher implements Runnable {
 	
 			do{
 				recursosIndisponiveis = false;
-				try{
+				try{				
 					Processo.checaProcesso(processo);
 					int pos_memoria = Memoria.alocar(processo);
 					Recursos.alocar(processo);
@@ -36,6 +36,7 @@ public class Dispatcher implements Runnable {
 					System.out.println("Resource Unnavailable: " + e.getRecurso() +
 							" to PID " + processo.getPid() + ", retry in 1s");
 					recursosIndisponiveis = true;
+					Memoria.desalocar(processo);
 					Thread.sleep(1000);
 				} catch (MemoriaInsuficienteException e){
 					System.out.println("Not enough memory to PID " + processo.getPid()
