@@ -1,3 +1,4 @@
+import java.nio.channels.AlreadyBoundException;
 
 public class Dispatcher implements Runnable {
 	String [] processAttrs;
@@ -24,15 +25,16 @@ public class Dispatcher implements Runnable {
 				  Integer.parseInt(processAttrs[4]), Integer.parseInt(processAttrs[5]), 
 				  Integer.parseInt(processAttrs[6]), Integer.parseInt(processAttrs[7]));
 		
-		// So Aloca se tiver memoria, caso controrio falhe sileciosamente
-		int pos_memoria = Memoria.alocar(processo);
-		boolean alocar = Recursos.alocar(processo);
-				
-		if(pos_memoria != -1 && alocar){
+		try{
+			int pos_memoria = Memoria.alocar(processo);
+			Recursos.alocar(processo);
 			processo.setOffset(pos_memoria);
 			Filas.enfileiraProcesso(processo);
-		}
 		
+		} catch (RecursoException e) {			
+			System.out.println("Resource Unnavailable: " + e.getRecurso() +
+					" to PID " + processo.getPid());
+		}
 	}
 
 }

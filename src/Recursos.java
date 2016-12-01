@@ -1,49 +1,62 @@
-
 public class Recursos {
 	private static boolean scannerAlocado;
 	private static boolean impressora1Alocada, impressora2Alocada;
 	private static boolean modemAlocado;
 	private static boolean sata1Alocada, sata2Alocada;
 	
-	public static synchronized boolean alocar(Processo p){
+	public static synchronized void alocar(Processo p) throws RecursoException{
+		checaRecursosAlocados(p);
 		if(p.getImpressora() == 1){
-			if(impressora1Alocada){
-				return false;
-			}
 			impressora1Alocada = true;
 		}
 		if(p.getImpressora() == 2){
-			if(impressora2Alocada){
-				return false;
-			}
 			impressora2Alocada = true;
 		}
 		if(p.getScanner() == 1){
-			if(scannerAlocado){
-				return false;
-			}
 			scannerAlocado = true;
 		}
 		if(p.getModem() == 1){
-			if(modemAlocado){
-				return false;
-			}
 			modemAlocado = true;
 		}
 		if(p.getDisco() == 1){
-			if(sata1Alocada){
-				return false;
-			}
 			sata1Alocada = true;
 		}
 		if(p.getDisco() == 2){
-			if(sata2Alocada){
-				return false;
-			}
 			sata2Alocada = true;
 		}
-		return true;
-		
+	}
+	
+	private static void checaRecursosAlocados(Processo p) throws RecursoException{
+		if(p.getImpressora() == 1){
+			if(impressora1Alocada){
+				throw new RecursoException("Printer 1");
+			}
+		}
+		if(p.getImpressora() == 2){
+			if(impressora2Alocada){
+				throw new RecursoException("Printer 2");
+			}
+		}
+		if(p.getScanner() == 1){
+			if(scannerAlocado){
+				throw new RecursoException("Scanner");
+			}
+		}
+		if(p.getModem() == 1){
+			if(modemAlocado){
+				throw new RecursoException("Modem");
+			}
+		}
+		if(p.getDisco() == 1){
+			if(sata1Alocada){
+				throw new RecursoException("Disk 1");
+			}
+		}
+		if(p.getDisco() == 2){
+			if(sata2Alocada){
+				throw new RecursoException("Disk 2");
+			}
+		}
 	}
 	
 	public static synchronized void desalocar(Processo p){
