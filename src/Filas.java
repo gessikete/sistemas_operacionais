@@ -17,8 +17,7 @@ public class Filas {
     }
 
     public static synchronized boolean enfileiraProcesso(Processo processo) throws SemRecursoException{
-    	if(getTotalProcessos() > 1000)
-    		throw new SemRecursoException("Process Queue");
+    	checaEspaco(processo);
         System.out.println("dispatcher => ");
         System.out.println("\tPID: " + processo.getPid());
         System.out.println("\toffset: " + processo.getOffset());
@@ -35,7 +34,8 @@ public class Filas {
 
     }
     
-    private static int getTotalProcessos(){
-    	return filaTempoReal.size() + filaUsuario1.size() + filaUsuario2.size() + filaUsuario2.size();
+    private static void checaEspaco(Processo p) throws SemRecursoException{
+    	if(filasProcessos.get(p.getPrioridade()).size() > 1000)
+    		throw new SemRecursoException("Process Queue");
     }
 }
