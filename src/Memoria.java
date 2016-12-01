@@ -10,7 +10,7 @@ public class Memoria {
 	 * @param qnt_alocar
 	 * @return posicao do vetor caso aloque, -1 caso contrario
 	 */
-	public static int alocar(Processo p) throws RecursoException{
+	public static int alocar(Processo p) throws SemRecursoException{
 		if(p.getPrioridade() == 0)
 			return aloca(p.getQntBlocosAlocados(), tempoReal, TAM_REAL);
 		else
@@ -40,7 +40,7 @@ public class Memoria {
 	}
 	
 	// podemos fazer quebrar com excessao ao inves de retornar bool
-	private static int aloca(int qnt_alocar, boolean[] fila, int max_fila) throws RecursoException{
+	private static int aloca(int qnt_alocar, boolean[] fila, int max_fila) throws SemRecursoException{
 		int qnt_livre = 0;
 		int k = 0, pos_free = -1;
 		
@@ -67,7 +67,7 @@ public class Memoria {
 			}
 		}
 		else{
-			throw new RecursoException("Memory");
+			throw new SemRecursoException("Memory");
 		}
 		return pos_free;
 	}

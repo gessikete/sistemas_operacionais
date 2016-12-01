@@ -31,7 +31,7 @@ public class Dispatcher implements Runnable {
 					processo.setOffset(pos_memoria);
 					Filas.enfileiraProcesso(processo);
 				
-				} catch (RecursoException e) {			
+				} catch (SemRecursoException e) {			
 					System.out.println("Resource Unnavailable: " + e.getRecurso() +
 							" to PID " + processo.getPid() + ", retry in 1s");
 					recursosIndisponiveis = true;

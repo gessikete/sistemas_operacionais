@@ -1,8 +1,8 @@
 
-public class RecursoException extends Exception{
+public class SemRecursoException extends Exception{
 	private String recurso;
 	
-	public RecursoException(String recurso){
+	public SemRecursoException(String recurso){
 		this.recurso = recurso;
 	}
 	
