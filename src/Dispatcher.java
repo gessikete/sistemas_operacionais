@@ -25,7 +25,7 @@ public class Dispatcher implements Runnable {
 	
 			do{
 				recursosIndisponiveis = false;
-				try{				
+				try{
 					Processo.checaProcesso(processo);
 					int pos_memoria = Memoria.alocar(processo);
 					Recursos.alocar(processo);

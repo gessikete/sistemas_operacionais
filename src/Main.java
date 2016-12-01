@@ -8,7 +8,7 @@ public class Main {
     	  ArrayList<String> records = new ArrayList<String>();
     	  try
     	  {
-    	    BufferedReader reader = new BufferedReader(new FileReader("entrada.txt"));
+    	    BufferedReader reader = new BufferedReader(new FileReader(args[0]));
     	    String line;
 					// le todas as linhas do arquivo, sendo cada linha um processo
     	    while ((line = reader.readLine()) != null)
