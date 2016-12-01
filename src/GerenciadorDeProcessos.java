@@ -7,7 +7,6 @@ public class GerenciadorDeProcessos extends Thread{
 				Thread.sleep(100);
 				if(!Filas.filasProcessos.get(0).isEmpty()){
 					this.executaTempoReal(Filas.filasProcessos.get(0).get(0));
-					
 				}else if(!Filas.filasProcessos.get(1).isEmpty()){
 					this.executaUsuario(Filas.filasProcessos.get(1).get(0));
 				}else if(!Filas.filasProcessos.get(2).isEmpty()){
