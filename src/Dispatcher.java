@@ -1,5 +1,7 @@
 import java.nio.channels.AlreadyBoundException;
 
+import exceptions.MemoriaInsuficienteException;
+
 public class Dispatcher implements Runnable {
 	String [] processAttrs;
 	
@@ -36,6 +38,11 @@ public class Dispatcher implements Runnable {
 							" to PID " + processo.getPid() + ", retry in 1s");
 					recursosIndisponiveis = true;
 					Thread.sleep(1000);
+				} catch (MemoriaInsuficienteException e){
+					System.out.println("Not enough memory to PID " + processo.getPid()
+							+ " it requested "+ processo.getQntBlocosAlocados() 
+							+ " but memory limit is " + e.getMaxMem()
+							+ " aborting process");
 				}
 			}while(recursosIndisponiveis);
 		

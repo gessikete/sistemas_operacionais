@@ -1,3 +1,4 @@
+import exceptions.MemoriaInsuficienteException;
 
 public class Memoria {
 	private static final int TAM_REAL = 64;
@@ -10,11 +11,17 @@ public class Memoria {
 	 * @param qnt_alocar
 	 * @return posicao do vetor caso aloque, -1 caso contrario
 	 */
-	public static int alocar(Processo p) throws SemRecursoException{
-		if(p.getPrioridade() == 0)
+	public static int alocar(Processo p) throws SemRecursoException, MemoriaInsuficienteException{
+		if(p.getPrioridade() == 0){
+			if(p.getQntBlocosAlocados() > TAM_REAL)
+				throw new MemoriaInsuficienteException(TAM_REAL);
 			return aloca(p.getQntBlocosAlocados(), tempoReal, TAM_REAL);
-		else
+		}
+		else{
+			if(p.getQntBlocosAlocados() > TAM_USUARIO)
+				throw new MemoriaInsuficienteException(TAM_USUARIO);
 			return aloca(p.getQntBlocosAlocados(), usuario, TAM_USUARIO);
+		}
 	}
 	
 	public static void desalocar(Processo p){
@@ -40,7 +47,7 @@ public class Memoria {
 	}
 	
 	// podemos fazer quebrar com excessao ao inves de retornar bool
-	private static int aloca(int qnt_alocar, boolean[] fila, int max_fila) throws SemRecursoException{
+	private static int aloca(int qnt_alocar, boolean[] fila, int max_fila) throws SemRecursoException, MemoriaInsuficienteException{
 		int qnt_livre = 0;
 		int k = 0, pos_free = -1;
 		
