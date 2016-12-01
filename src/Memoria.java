@@ -1,4 +1,4 @@
-import exceptions.MemoriaInsuficienteException;
+import exceptions.*;
 
 public class Memoria {
 	private static final int TAM_REAL = 64;

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import exceptions.*;
 
 public class Filas {
     private static List<Processo> filaTempoReal = new ArrayList<Processo>();

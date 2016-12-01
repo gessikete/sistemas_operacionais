@@ -1,3 +1,5 @@
+import exceptions.SemRecursoException;
+
 public class Recursos {
 	private static boolean scannerAlocado;
 	private static boolean impressora1Alocada, impressora2Alocada;
