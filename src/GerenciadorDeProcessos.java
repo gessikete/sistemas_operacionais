@@ -44,6 +44,7 @@ public class GerenciadorDeProcessos extends Thread{
 		
 		System.out.println("\tP" + processo.getPid() + " instruction " + processo.getTempoExecutado());
 		Processo p = Filas.filasProcessos.get(processo.getPrioridade()).remove(0);
+		processo.setPrioridade(3); // vai pro fim da fila 3 pq sim
 		Filas.filasProcessos.get(processo.getPrioridade()).add(p);
 		
 		if(processo.getTempoExecutado() >= processo.getT_processador()){
