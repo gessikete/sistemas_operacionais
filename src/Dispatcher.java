@@ -44,7 +44,7 @@ public class Dispatcher implements Runnable {
 							+ " but memory limit is " + e.getMaxMem()
 							+ " aborting process");
 				}
-			}while(recursosIndisponiveis);
+			}while(recursosIndisponiveis); // caso recursos estejam indisponíveis, tente novamente
 		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
