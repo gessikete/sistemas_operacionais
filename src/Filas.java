@@ -18,15 +18,15 @@ public class Filas {
     public static synchronized boolean enfileiraProcesso(Processo processo) {
         System.out.println("dispatcher => ");
         System.out.println("\tPID: " + processo.getPid());
-        System.out.println("\toffset: " + processo.getPosMemoria());
+        System.out.println("\toffset: " + processo.getOffset());
         System.out.println("\tblocks: " + processo.getQntBlocosAlocados());
         System.out.println("\tpriority: " + processo.getPrioridade());
         System.out.println("\ttime init: " + processo.getT_inicializa());
         System.out.println("\ttime: " + processo.getT_processador());
-        System.out.println("\tprinters: " + processo.isImpressora());
-        System.out.println("\tscanners: " + processo.isScanner());
-        System.out.println("\tmodems: " + processo.isModem());
-        System.out.println("\tdisco: " + processo.isDisco());
+        System.out.println("\tprinters: " + processo.getImpressora());
+        System.out.println("\tscanners: " + processo.getScanner());
+        System.out.println("\tmodems: " + processo.getModem());
+        System.out.println("\tdisco: " + processo.getDisco());
 
         return filasProcessos.get(processo.getPrioridade()).add(processo);
 

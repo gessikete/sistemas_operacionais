@@ -6,9 +6,9 @@ public class Processo {
 	private int prioridade;
 	private int qntBlocosAlocados;
 	private int t_inicializa, t_processador;
-	private boolean impressora, scanner, modem, disco;
+	private int impressora, scanner, modem, disco;
 	private int tempoExecutado;
-	private int posMemoria;
+	private int offset;
 
 	
 	public int getTempoExecutado() {
@@ -20,7 +20,7 @@ public class Processo {
 	}
 
 	public Processo(int t_inicializa, int prioridade, int t_processador, int qntBlocosAlocados,
-			boolean impressora, boolean scanner, boolean modem, boolean disco) {
+			int impressora, int scanner, int modem, int disco) {
 		super();
 		this.incrCountPid();
 		this.pid = countPid;
@@ -28,12 +28,12 @@ public class Processo {
 		this.qntBlocosAlocados = qntBlocosAlocados;
 		this.t_inicializa = t_inicializa;
 		this.t_processador = t_processador;
-		this.impressora = impressora;
+		this.setImpressora(impressora);
 		this.scanner = scanner;
 		this.modem = modem;
 		this.disco = disco;
 		this.tempoExecutado = 0;
-		this.posMemoria = 0;
+		this.offset = 0;
 	}
 	
 	private synchronized void incrCountPid(){
@@ -49,21 +49,6 @@ public class Processo {
 	public int getPid() {
 		return pid;
 	}
-
-
-
-	public boolean isModem() {
-		return modem;
-	}
-
-
-
-	public boolean isDisco() {
-		return disco;
-	}
-
-
-
 	public int getT_inicializa() {
 		return t_inicializa;
 	}
@@ -88,23 +73,56 @@ public class Processo {
 	public void setQntBlocosAlocados(int qntBlocosAlocados) {
 		this.qntBlocosAlocados = qntBlocosAlocados;
 	}
-	public boolean isImpressora() {
-		return impressora;
-	}
-	public void setImpressora(boolean impressora) {
-		this.impressora = impressora;
-	}
-	public boolean isScanner() {
+	public int getScanner() {
 		return scanner;
 	}
-	public void setScanner(boolean scanner) {
+
+	public void setScanner(int scanner) {
 		this.scanner = scanner;
 	}
-	public int getPosMemoria() {
-		return posMemoria;
+
+	public int getModem() {
+		return modem;
 	}
-	public void setPosMemoria(int pos_memoria) {
-		this.posMemoria = pos_memoria;
+
+	public void setModem(int modem) {
+		this.modem = modem;
+	}
+
+	public int getDisco() {
+		return disco;
+	}
+
+	public void setDisco(int disco) {
+		this.disco = disco;
+	}
+
+	public static void setCountPid(int countPid) {
+		Processo.countPid = countPid;
+	}
+
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+
+	public void setTempoExecutado(int tempoExecutado) {
+		this.tempoExecutado = tempoExecutado;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+	
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+
+	public int getImpressora() {
+		return impressora;
+	}
+
+	public void setImpressora(int impressora) {
+		this.impressora = impressora;
 	}
 
 	

@@ -42,8 +42,6 @@ public class Main {
     		  Dispatcher criador = new Dispatcher(processAttrs);
     		  Thread t = new Thread(criador);
     		  t.start();
-    				  
-    		   //System.out.println(record);
     	  }
     }
 
