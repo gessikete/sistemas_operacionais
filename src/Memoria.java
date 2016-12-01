@@ -11,7 +11,7 @@ public class Memoria {
 	 * @param qnt_alocar
 	 * @return posicao do vetor caso aloque, -1 caso contrario
 	 */
-	public static int alocar(Processo p) throws SemRecursoException, MemoriaInsuficienteException{
+	public static synchronized int alocar(Processo p) throws SemRecursoException, MemoriaInsuficienteException{
 		if(p.getPrioridade() == 0){
 			if(p.getQntBlocosAlocados() > TAM_REAL)
 				throw new MemoriaInsuficienteException(TAM_REAL);
@@ -67,7 +67,7 @@ public class Memoria {
 			k = i + 1;
 			qnt_livre = 0;
 		}
-		// se a quantidade de espacos livres for igual a quantidade que se quer alocar
+		// se a quantidade de espacos livres for maior a quantidade que se quer alocar
 		if(pos_free != -1){
 			for(int i = pos_free; i < pos_free + qnt_alocar; i++){
 				fila[i] = true;
