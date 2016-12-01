@@ -15,7 +15,9 @@ public class Filas {
         filasProcessos.add(filaUsuario3);
     }
 
-    public static synchronized boolean enfileiraProcesso(Processo processo) {
+    public static synchronized boolean enfileiraProcesso(Processo processo) throws SemRecursoException{
+    	if(getTotalProcessos() > 1000)
+    		throw new SemRecursoException("Process Queue");
         System.out.println("dispatcher => ");
         System.out.println("\tPID: " + processo.getPid());
         System.out.println("\toffset: " + processo.getOffset());
@@ -30,5 +32,9 @@ public class Filas {
 
         return filasProcessos.get(processo.getPrioridade()).add(processo);
 
+    }
+    
+    private static int getTotalProcessos(){
+    	return filaTempoReal.size() + filaUsuario1.size() + filaUsuario2.size() + filaUsuario2.size();
     }
 }
