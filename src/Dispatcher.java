@@ -26,6 +26,7 @@ public class Dispatcher implements Runnable {
 			do{
 				recursosIndisponiveis = false;
 				try{
+					Processo.checaProcesso(processo);
 					int pos_memoria = Memoria.alocar(processo);
 					Recursos.alocar(processo);
 					processo.setOffset(pos_memoria);
@@ -41,6 +42,8 @@ public class Dispatcher implements Runnable {
 							+ " it requested "+ processo.getQntBlocosAlocados() 
 							+ " but memory limit is " + e.getMaxMem()
 							+ " aborting process");
+				} catch(Exception e){
+					System.out.println(e.getMessage());
 				}
 			}while(recursosIndisponiveis); // caso recursos estejam indisponíveis, tente novamente
 		

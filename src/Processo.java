@@ -10,6 +10,10 @@ public class Processo {
 	private int tempoExecutado;
 	private int offset;
 
+	public static void checaProcesso(Processo p) throws Exception{
+		if(p.getPrioridade() > 3 || p.getPrioridade() < 0)
+			throw new Exception("Process PID " + p.getPid() + " must have priority in range [0..3]");
+	}
 	
 	public int getTempoExecutado() {
 		return tempoExecutado;
