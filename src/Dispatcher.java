@@ -37,6 +37,7 @@ public class Dispatcher implements Runnable {
 							" to PID " + processo.getPid() + ", retry in 1s");
 					recursosIndisponiveis = true;
 					Memoria.desalocar(processo);
+					// Recursos.desalocar(processo);
 					Thread.sleep(1000);
 				} catch (MemoriaInsuficienteException e){
 					System.out.println("Not enough memory to PID " + processo.getPid()
@@ -46,7 +47,7 @@ public class Dispatcher implements Runnable {
 				} catch(Exception e){
 					System.out.println(e.getMessage());
 				}
-			}while(recursosIndisponiveis); // caso recursos estejam indisponíveis, tente novamente
+			}while(recursosIndisponiveis); // caso recursos estejam indisponï¿½veis, tente novamente
 		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
