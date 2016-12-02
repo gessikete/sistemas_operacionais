@@ -25,11 +25,11 @@ public class Main {
     	  }
 
 				// cria os objetos dispatcher e clock 
-    	  GerenciadorDeProcessos dispatcher = new GerenciadorDeProcessos();
+    	  GerenciadorDeProcessos gerenciador = new GerenciadorDeProcessos();
     	  Clock clock = new Clock();
 
 				// inicializa o dispatcher e o clock
-    	  dispatcher.start();
+    	  gerenciador.start();
     	  clock.start();
 
 				// inicializa a fila de tempo real e as filas de usuario
@@ -39,8 +39,8 @@ public class Main {
     	  for(String record:records){
     		  String[] processAttrs = record.replaceAll("\\s+","").split(",");
 					
-    		  Dispatcher criador = new Dispatcher(processAttrs);
-    		  Thread t = new Thread(criador);
+    		  Dispatcher dispatcher = new Dispatcher(processAttrs);
+    		  Thread t = new Thread(dispatcher);
     		  t.start();
     	  }
     }
